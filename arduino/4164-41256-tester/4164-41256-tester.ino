@@ -59,8 +59,6 @@ void setup() {
 /* -----------  LOOP  ---------- */
 void loop(void) {
 
-		 getserial();
-
 		 selector=selchip(); // 0= vuoto 1=4164 2=4116
 
 		 if (l_sel!=selector) {
