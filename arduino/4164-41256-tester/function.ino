@@ -67,8 +67,8 @@ void error(int r, int c)
 		 String mhex = String(a,HEX);
 		 interrupts();
 		 u8g2.clearBuffer();
-		 u8g2.setFont(u8g2_font_logisoso16_tr);
-		 u8g2.drawStr(8,16,"DRAM-TESTER");
+		 u8g2.setFont(u8g2_font_gb16st_t_2);
+		 u8g2.drawStr(4, 12, NAME);
 		 u8g2.setFont(u8g2_font_gb16st_t_2);
 		 u8g2.drawStr(4,32,"Err. on ");
 		 u8g2.drawStr(70,32,(char*)mhex.c_str() );
@@ -162,10 +162,10 @@ byte selchip() {
 // visualizzazione display
 void setDisp() {
 		 u8g2.clearBuffer(); // clear the internal memory
-		 u8g2.setFont(u8g2_font_logisoso16_tr);  // choose a suitable font at https://github.com/olikraus/u8g2/wiki/fntlistall
-		 u8g2.drawStr(8,16,"DRAM-TESTER");
+		 u8g2.setFont(u8g2_font_gb16st_t_2);
+		 u8g2.drawStr(4, 12, NAME);
 		 u8g2.setFont(u8g2_font_5x7_tf);
-		 u8g2.drawStr(90,27,"4.1.2");
+		 u8g2.drawStr(90,27, VERSION);
 		 u8g2.setFont(u8g2_font_gb16st_t_2);
 		 switch (selector) {
 		 case 0:
@@ -187,7 +187,6 @@ void setDisp() {
 void resDisp (String ntest) {
 		 u8g2.clearBuffer();
 		 u8g2.setFont(u8g2_font_logisoso16_tr);
-		 //u8g2.drawStr(4,16,ntest);
 		 u8g2.setCursor(4,16);
 		 u8g2.print(ntest);
 		 u8g2.setFont(u8g2_font_gb16st_t_2);
