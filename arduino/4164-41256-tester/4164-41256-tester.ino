@@ -5,7 +5,7 @@
 
 U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0); 
 
-int mode;
+int mode = 1;
 int lastState = HIGH;
 int currentState;
 unsigned long pressedTime = 0;
