@@ -1,42 +1,9 @@
 #include <Arduino.h>
 #include <U8g2lib.h>
 #include <Wire.h>
+#include "config.hpp"
 
 U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0); 
-
-#define DI          15  // PC1
-#define DO           8  // PB0
-#define CAS          9  // PB1
-#define RAS         17  // PC3
-#define WE          16  // PC2
-
-#define XA0         10//18  // PC4
-#define XA1          2  // PD2
-#define XA2         11//19  // PC5
-#define XA3          6  // PD6
-#define XA4          5  // PD5
-#define XA5          4  // PD4
-#define XA6          7  // PD7
-#define XA7          3  // PD3
-#define XA8         14  // PC0
-
-#define M_START     12  // Start/mode 
-//#define M_CHIPSEL   12 // Selector 4116 / 4164
-// DISABLE #define M_CHIPSEL   A6 // Selector 4116 / 4164
-#define BUS_SIZE     9
-/*
- * GENERAL PINOUT ARDUINO
- * D1 = SWITCH START TEST
- * A4 = LCD
- * A5 = LCD
- * D12 = SWITCH MODE (5V) 4116 - (GND) 4164/256
- *
- *menù
- *sw 4116                             -                         4164/256
- *press start (2 sec to start test)   - press stat to select 4164/256, 4532L 4532H, long press to start test
- *
- */
-
 
 int mode;
 int lastState = HIGH;
@@ -53,7 +20,6 @@ volatile int bus_size;
 const unsigned int a_bus[BUS_SIZE] = {
 		 XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8
 };
-
 
 /* -----  SETUP  ------ */
 void setup() {
