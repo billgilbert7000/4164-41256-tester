@@ -81,21 +81,11 @@ void error(int r, int c)
 		 delay(300);
 }
 
-
-void animate(int v) {
-		 /*interrupts();
-			 if (v==1){u8g2.drawStr(110,32,"\\");} else {u8g2.drawStr(110,32,"/");}
-			 u8g2.sendBuffer();
-			 noInterrupts();*/
-}
-
 void fill(int v, bool rd) {
 		 int r, c, g = 0;
 		 int nocol = 0;
 		 if (mode>1) nocol=1;
-		 //v %= 1;
 		 for (c = 0; c < (1<<bus_size-nocol); c++) {
-					if (rd) animate(g? HIGH : LOW); //animazione
 					for (r = 0; r < (1<<bus_size); r++) {
 							 writeAddress(r, c, v);
 							 if (rd){
@@ -107,7 +97,6 @@ void fill(int v, bool rd) {
 					}
 					g ^= 1;
 		 }
-		 //blink();
 }
 
 void fillx(int v) {
@@ -116,7 +105,6 @@ void fillx(int v) {
 		 if (mode>1) nocol=1;
 		 v %= 1;
 		 for (c = 0; c < (1<<bus_size-nocol); c++) {
-					animate(g? HIGH : LOW); //animazione
 					for (r = 0; r < (1<<bus_size); r++) {
 							 writeAddress(r, c, v);
 							 if (v != readAddress(r, c)){
@@ -145,23 +133,11 @@ void readonly(int v) {
 
 byte selchip() {
 		 return 1;
-		 /*
-     //selezione chip
-		 int MREAD = analogRead(M_CHIPSEL); // 0 - 180 - 470 : 0=4164 510=vuoto 1024=4116
-		 //Serial.println(MREAD);
-		 if (MREAD<10) {//4164
-		 return 0;
-		 } else if (MREAD<200) {//4164-256-32
-		 return 1;
-		 } else {//4116
-		 return 2;
-		 }
-		 */
 }
 
 // visualizzazione display
 void setDisp() {
-		 u8g2.clearBuffer(); // clear the internal memory
+		 u8g2.clearBuffer();
 		 u8g2.setFont(u8g2_font_gb16st_t_2);
 		 u8g2.drawStr(4, 12, NAME);
 		 u8g2.setFont(u8g2_font_5x7_tf);
@@ -180,10 +156,9 @@ void setDisp() {
 					if (mode == 2) u8g2.drawStr(4,32,"32Kx1 L");
 					if (mode == 3) u8g2.drawStr(4,32,"32Kx1 H");
 		 }
-		 u8g2.sendBuffer();         // transfer internal memory to the display
+		 u8g2.sendBuffer();
 }
 
-//reset display
 void resDisp (String ntest) {
 		 u8g2.clearBuffer();
 		 u8g2.setFont(u8g2_font_logisoso16_tr);
