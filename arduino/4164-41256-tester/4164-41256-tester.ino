@@ -39,7 +39,7 @@ void setup() {
 		 l_sel = selector;
 		 setDisp();
 }
-/* -----------  LOOP  ---------- */
+
 void loop(void) {
 
 		 selector = 1; // 0= vuoto 1=4164 2=4116
