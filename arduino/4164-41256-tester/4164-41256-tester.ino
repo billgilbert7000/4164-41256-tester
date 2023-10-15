@@ -14,8 +14,6 @@ byte l_sel = 0;
 bool isError = false;
 byte ntest =0;
 
-String  m_sym[2] = {"\\","/"};
-
 volatile int bus_size;
 const unsigned int a_bus[BUS_SIZE] = {
 		 XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8
