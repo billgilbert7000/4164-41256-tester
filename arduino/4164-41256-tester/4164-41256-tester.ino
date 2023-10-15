@@ -21,12 +21,8 @@ const unsigned int a_bus[BUS_SIZE] = {
 		 XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8
 };
 
-/* -----  SETUP  ------ */
 void setup() {
 		 int i;
-		 u8g2.begin();
-		 Serial.begin(9600); 
-
 		 for (i = 0; i < BUS_SIZE; i++)
 					pinMode(a_bus[i], OUTPUT);
 
@@ -34,32 +30,21 @@ void setup() {
 		 pinMode(RAS, OUTPUT);
 		 pinMode(WE, OUTPUT);
 		 pinMode(DI, OUTPUT);
-		 //pinMode(M_CHIPSEL, INPUT);
 		 pinMode(M_START, INPUT);
 		 pinMode(DO, INPUT);
+
 		 digitalWrite(WE, HIGH);
 		 digitalWrite(RAS, HIGH);
 		 digitalWrite(CAS, HIGH);
 
-
-/*
-	if (digitalRead(M_TYPE)) {
-	/* jumper not set - 41256 */
-		 /*bus_size = BUS_SIZE;
-		 //Serial.print("256Kx1 ");
-		 } else {
-		 /* jumper set - 4164 */
-		 /*bus_size = BUS_SIZE - 1;
-		 //Serial.print("64Kx1 ");
-		 }*/
-		 selector=selchip();
-		 l_sel=selector;
-		 setDisp();\
+		 selector = 1;
+		 l_sel = selector;
+		 setDisp();
 }
 /* -----------  LOOP  ---------- */
 void loop(void) {
 
-		 selector=selchip(); // 0= vuoto 1=4164 2=4116
+		 selector = 1; // 0= vuoto 1=4164 2=4116
 
 		 if (l_sel!=selector) {
 					l_sel=selector;
@@ -89,10 +74,8 @@ void loop(void) {
 					ntest=0;
 					if (selector>0) startTest();
 		 }
-   
 		 delay(100);
 }
-
    
 void startTest() {
 		 initDram();
@@ -150,13 +133,6 @@ void startTest() {
   
 		 if (!isError){
 					finish();
-					/*
-						u8g2.clearBuffer();
-						u8g2.setFont(u8g2_font_logisoso16_tr);
-						u8g2.drawStr(6,16,"TEST PASSED");
-						u8g2.setFont(u8g2_font_gb16st_t_2);
-						u8g2.drawStr(12,30,"press start");
-						u8g2.sendBuffer();*/
 					while (digitalRead(M_START)==LOW) {
 					}
           while (digitalRead(M_START)==HIGH) {

@@ -129,10 +129,6 @@ void readonly(int v) {
 		 }
 }
 
-byte selchip() {
-		 return 1;
-}
-
 // visualizzazione display
 void setDisp() {
 		 u8g2.clearBuffer();
