@@ -13,6 +13,8 @@ class Buttons {
 public:
      Button* poll();
 
+     void wait_ok();
+
 private:
      SelButton sel;
      OkButton ok;

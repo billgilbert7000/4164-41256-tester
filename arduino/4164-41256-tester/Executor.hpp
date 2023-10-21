@@ -3,6 +3,7 @@
 //
 
 #include "Out.hpp"
+#include "Buttons.hpp"
 #include "MenuItem.hpp"
 #include "Config.hpp"
 
@@ -12,18 +13,24 @@
 class Executor {
 
 public:
-     Executor(Out&);
+     Executor(Out&, Buttons&);
 
      void init();
      void go(MenuItem::item_t);
 
 private:
      Out& out;
+     Buttons& btns;
 
 private:
+     u8 bus_size;
+
      static const u8 BUS_SIZE = 9;
       u8 a_bus[BUS_SIZE] = {
 	  XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8,
      };
+
+private:
+     void about();
 };
 #endif // _EXECUTOR_HPP_

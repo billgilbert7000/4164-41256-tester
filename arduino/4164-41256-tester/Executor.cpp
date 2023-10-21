@@ -5,10 +5,28 @@
 #include "Executor.hpp"
 #include <Arduino.h>
 
-Executor::Executor(Out& o):
-     out(o)
+Executor::Executor(Out& o, Buttons& b):
+     out(o),
+     btns(b)
 {
      return;
+}
+
+void Executor::go(MenuItem::item_t item) {
+     if (item == MenuItem::_about) return about();
+     bus_size = BUS_SIZE;
+     if (item != MenuItem::_256k) --bus_size;
+     //
+     // TODO
+     //
+     btns.wait_ok();
+}
+
+void Executor::about() {
+     //
+     // TODO
+     //
+     btns.wait_ok();
 }
 
 void Executor::init() {

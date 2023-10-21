@@ -15,7 +15,7 @@ Congratulation<Out> cong(out);
 Buttons btns;
 Menu menu;
 MenuDrawer menu_drawer(out);
-Executor executor(out);
+Executor executor(out, btns);
 
 void setup() {
      out.init();
