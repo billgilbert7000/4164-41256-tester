@@ -30,9 +30,16 @@ private:
 	  XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8,
      };
 
+     u8 mode;
+
 private:
+     void set_mode(MenuItem::item_t);
      void about();
      void test();
      void init_dram();
+     void fillx(int);
+     void write_address(unsigned int, unsigned int, int);
+     int read_address(unsigned int, unsigned int);
+     void error(int, int);
 };
 #endif // _EXECUTOR_HPP_

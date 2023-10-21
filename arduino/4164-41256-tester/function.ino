@@ -1,16 +1,4 @@
 /*
-void initDram() {
-		 int i;
-		 _delay_us(250);         // Initial DRAM startup delay 250us
-		 for(i = 0 ; i < 8 ; i++)  {
-					digitalWrite(a_bus[i],LOW);
-		 }
-  
-		 for(i = 0 ; i < 8 ; i++)  {
-					digitalWrite(RAS, LOW);
-					digitalWrite(RAS, HIGH);
-		 }
-}
 
 void setBus(unsigned int a) {
 		 int i;
@@ -98,23 +86,6 @@ void fill(int v, bool rd) {
 		 }
 }
 
-void fillx(int v) {
-		 int r, c, g = 0;
-		 int nocol = 0;
-		 if (mode>1) nocol=1;
-		 v %= 1;
-		 for (c = 0; c < (1<<bus_size-nocol); c++) {
-					for (r = 0; r < (1<<bus_size); r++) {
-							 writeAddress(r, c, v);
-							 if (v != readAddress(r, c)){
-										error(r, c);
-										return;
-							 }
-							 v ^= 1;
-					}
-					g ^= 1;
-		 }
-}
 
 void readonly(int v) {
 		 int r, c;

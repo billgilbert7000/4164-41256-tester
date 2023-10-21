@@ -16,12 +16,22 @@ void Executor::go(MenuItem::item_t item) {
      if (item == MenuItem::_about) return about();
      bus_size = BUS_SIZE;
      if (item != MenuItem::_256k) --bus_size;
+     set_mode(item);
      test();
      btns.wait_ok();
 }
 
 void Executor::test() {
      init_dram();
+
+     out.clear();
+     out.cursor(20);
+     out.println("Тест № 1");
+     out.display();
+
+     noInterrupts();
+     fillx(0);
+     interrupts();
      //
      // TODO
      //
@@ -60,5 +70,23 @@ void Executor::init_dram() {
      for (u8 i = 0; i < 8; i++)  {
 	  digitalWrite(RAS, LOW);
 	  digitalWrite(RAS, HIGH);
+     }
+}
+
+void Executor::fillx(int v) {
+     int r, c, g = 0;
+     int nocol = 0;
+     if (mode > 1) nocol = 1;
+     v %= 1;
+     for (c = 0; c < (1 << bus_size - nocol); c++) {
+	  for (r = 0; r < (1 << bus_size); r++) {
+	       write_address(r, c, v);
+	       if (v != read_address(r, c)) {
+		    error(r, c);
+		    return;
+	       }
+	       v ^= 1;
+	  }
+	  g ^= 1;
      }
 }
