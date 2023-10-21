@@ -20,7 +20,7 @@ Executor executor(out, btns);
 void setup() {
      out.init();
 		 executor.init();
-     cong.display();
+     // cong.display();
      out.clear();
      out.display();
      menu_drawer.draw(menu.get());

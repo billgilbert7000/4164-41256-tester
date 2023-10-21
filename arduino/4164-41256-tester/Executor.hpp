@@ -43,5 +43,7 @@ private:
      int read_address(unsigned int, unsigned int);
      void set_bus(unsigned int);
      void error(int, int);
+     void fill(int, bool);
+     void readonly(int);
 };
 #endif // _EXECUTOR_HPP_

@@ -30,12 +30,45 @@ void Executor::test() {
      out.println("Тест N 1");
      out.display();
 
-     //noInterrupts();
      fillx(0);
-     //interrupts();
-     //
-     // TODO
-     //
+     if (is_error) return;
+
+     out.clear();
+     out.cursor(20);
+     out.println("Тест N 2");
+     out.display();
+
+     fillx(1);
+     if (is_error) return;
+
+     out.clear();
+     out.cursor(20);
+     out.println("Full Write");
+     out.display();
+
+     fill(1, false);
+     if (is_error) return;
+
+     out.clear();
+     out.cursor(20);
+     out.println("Full Read");
+     out.display();
+
+     readonly(1);
+     if (is_error) return;
+
+     out.clear();
+     out.cursor(20);
+     out.println("Finishing");
+     out.display();
+
+     fill(0, true);
+     if (is_error) return;
+
+     out.clear();
+     out.cursor(20);
+     out.println("ВСЁ ХОРОШО!");
+     out.display();
 }
 
 void Executor::about() {
@@ -106,7 +139,6 @@ void Executor::error(int r, int c) {
      out.display();
 
      is_error = true;
-     btns.wait_ok();
 }
 
 int Executor::read_address(unsigned int r, unsigned int c) {
