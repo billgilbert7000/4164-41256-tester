@@ -27,12 +27,12 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Тест № 1");
+     out.println("Тест N 1");
      out.display();
 
-     noInterrupts();
+     //noInterrupts();
      fillx(0);
-     interrupts();
+     //interrupts();
      //
      // TODO
      //
@@ -99,7 +99,7 @@ void Executor::error(int r, int c) {
      out.clear();
      out.font(Regular);
      out.cursor(15);
-     out.print("Ошибка");
+     out.print("Ошибка ");
      out.font(Small);
      out.cursor(25);
      out.print(mhex.c_str());
@@ -153,5 +153,29 @@ void Executor::set_bus(unsigned int a) {
 	  } else {
 	       digitalWrite(a_bus[i], LOW);
 	  }
+     }
+}
+
+void Executor::set_mode(MenuItem::item_t i) {
+     switch (i) {
+
+     case MenuItem::_64k:
+	  mode = 1;
+	  break;
+
+     case MenuItem::_256k:
+	  mode = 0;
+	  break;
+
+     case MenuItem::_32k_low:
+	  mode = 2;
+	  break;
+
+     case MenuItem::_32k_high:
+	  mode = 3;
+	  break;
+
+     default:
+	  mode = 1;
      }
 }
