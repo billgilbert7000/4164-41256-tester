@@ -40,6 +40,7 @@ void handle_buttons(Button* b) {
 
      case Button::Ok:
 					handle_ok();
+					menu_drawer.draw(menu.get());
 					break;
 
      case Button::Select:

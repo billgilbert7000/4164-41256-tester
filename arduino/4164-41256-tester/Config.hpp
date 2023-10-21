@@ -2,7 +2,7 @@
 #define __CONFIG_HPP__
 
 #define NAME        "4164-256 test"
-#define VERSION     "1.2.0"
+#define VERSION     "2.1.0 ProtoDed Edition"
 
 #define DI          15  // PC1
 #define DO           8  // PB0

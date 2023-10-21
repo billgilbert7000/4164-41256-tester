@@ -23,9 +23,12 @@ void Executor::go(MenuItem::item_t item) {
 }
 
 void Executor::about() {
-     //
-     // TODO
-     //
+     out.clear();
+     out.font(Small);
+     out.cursor(0);
+     out.println(NAME);
+     out.println(VERSION);
+     out.display();
      btns.wait_ok();
 }
 
