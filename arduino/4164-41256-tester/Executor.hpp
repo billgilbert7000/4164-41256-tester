@@ -14,5 +14,8 @@ public:
      Executor(Out&);
 
      void go(MenuItem::item_t);
+
+private:
+     Out& out;
 };
 #endif // _EXECUTOR_HPP_
