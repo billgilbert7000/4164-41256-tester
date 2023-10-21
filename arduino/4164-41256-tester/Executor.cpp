@@ -188,6 +188,20 @@ void Executor::set_bus(unsigned int a) {
      }
 }
 
+void Executor::readonly(int v) {
+     int r, c;
+     int nocol = 0;
+     if (mode > 1) nocol = 1;
+     for (c = 0; c < (1 << bus_size-nocol); c++) {
+	  for (r = 0; r < (1 << bus_size); r++) {
+	       if (v != read_address(r, c)){
+		    error(r, c);
+		    return;
+	       }
+	  }
+     }
+}
+
 void Executor::set_mode(MenuItem::item_t i) {
      switch (i) {
 
