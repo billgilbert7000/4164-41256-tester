@@ -130,18 +130,28 @@ int Executor::read_address(unsigned int r, unsigned int c) {
 
 void Executor::write_address(unsigned int r, unsigned int c, int v) {
      // row
-     setBus(r);
+     set_bus(r);
      digitalWrite(RAS, LOW);
      // rw
      digitalWrite(WE, LOW);
      // val
      digitalWrite(DI, (v & 1) ? HIGH : LOW);
      // col
-     setBus(c);
+     set_bus(c);
      if (mode == 2) digitalWrite(a_bus[7], LOW);
      if (mode == 3) digitalWrite(a_bus[7], HIGH);
      digitalWrite(CAS, LOW);
      digitalWrite(WE, HIGH);
      digitalWrite(CAS, HIGH);
      digitalWrite(RAS, HIGH);
+}
+
+void Executor::set_bus(unsigned int a) {
+     for (u8 i = 0; i < bus_size; i++) { //cambiato con bus_size piccolo
+	  if (bitRead(a, i) == 1) {
+	       digitalWrite(a_bus[i], HIGH);
+	  } else {
+	       digitalWrite(a_bus[i], LOW);
+	  }
+     }
 }

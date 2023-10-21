@@ -1,16 +1,4 @@
 /*
-
-void setBus(unsigned int a) {
-		 int i;
-		 for (i = 0; i < bus_size; i++) { //cambiato con bus_size piccolo
-					if (bitRead(a, i)==1) {
-							 digitalWrite(a_bus[i], HIGH);
-					} else {
-							 digitalWrite(a_bus[i], LOW);
-					}
-		 } 
-}
-
 void fill(int v, bool rd) {
 		 int r, c, g = 0;
 		 int nocol = 0;
@@ -28,7 +16,6 @@ void fill(int v, bool rd) {
 					g ^= 1;
 		 }
 }
-
 
 void readonly(int v) {
 		 int r, c;
