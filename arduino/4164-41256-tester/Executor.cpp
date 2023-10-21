@@ -17,6 +17,7 @@ void Executor::go(MenuItem::item_t item) {
      bus_size = BUS_SIZE;
      if (item != MenuItem::_256k) --bus_size;
      set_mode(item);
+     is_error = false;
      test();
      btns.wait_ok();
 }
@@ -89,4 +90,21 @@ void Executor::fillx(int v) {
 	  }
 	  g ^= 1;
      }
+}
+
+void Executor::error(int r, int c) {
+     unsigned long a = ((unsigned long)c << bus_size) + r;
+     String mhex = String(a, HEX);
+
+     out.clear();
+     out.font(Regular);
+     out.cursor(15);
+     out.print("Ошибка");
+     out.font(Small);
+     out.cursor(25);
+     out.print(mhex.c_str());
+     out.display();
+
+     is_error = true;
+     btns.wait_ok();
 }

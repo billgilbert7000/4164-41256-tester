@@ -31,6 +31,7 @@ private:
      };
 
      u8 mode;
+     bool is_error;
 
 private:
      void set_mode(MenuItem::item_t);

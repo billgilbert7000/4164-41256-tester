@@ -48,25 +48,6 @@ int readAddress(unsigned int r, unsigned int c) {
 		 return ret;
 }
 
-void error(int r, int c)
-{
-		 unsigned long a = ((unsigned long)c << bus_size) + r;
-		 String mhex = String(a,HEX);
-		 interrupts();
-		 u8g2.clearBuffer();
-		 u8g2.setFont(u8g2_font_gb16st_t_2);
-		 u8g2.drawStr(4, 12, NAME);
-		 u8g2.setFont(u8g2_font_gb16st_t_2);
-		 u8g2.drawStr(4,32,"Err. on ");
-		 u8g2.drawStr(70,32,(char*)mhex.c_str() );
-		 u8g2.sendBuffer();
-		 isError=true;
-		 while (digitalRead(M_START)==LOW) {
-		 }
-		 while (digitalRead(M_START)==HIGH) {
-		 }
-		 delay(300);
-}
 
 void fill(int v, bool rd) {
 		 int r, c, g = 0;
