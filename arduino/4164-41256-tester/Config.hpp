@@ -23,4 +23,7 @@
 #define M_START     12  // Start/mode 
 #define BUS_SIZE     9
 
+#define SEL_BUTTON  13
+#define OK_BUTTON   12
+
 #endif // __CONFIG_HPP__
