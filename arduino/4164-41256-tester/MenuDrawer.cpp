@@ -35,7 +35,7 @@ void MenuDrawer::draw(MenuItem::item_t i) const {
 	  break;
 
      case MenuItem::_about:
-	  o.print("About");
+	  o.print("О прошивке");
 	  break;
      }
 

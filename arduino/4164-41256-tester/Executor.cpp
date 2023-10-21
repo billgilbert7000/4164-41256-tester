@@ -27,7 +27,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Тест N 1");
+     out.println("Тест: 0101...");
      out.display();
 
      fillx(0);
@@ -35,7 +35,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Тест N 2");
+     out.println("Тест: 1010...");
      out.display();
 
      fillx(1);
@@ -43,7 +43,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Full Write");
+     out.println("Пишем 1111...");
      out.display();
 
      fill(1, false);
@@ -51,7 +51,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Full Read");
+     out.println("Проверяем");
      out.display();
 
      readonly(1);
@@ -59,7 +59,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("Finishing");
+     out.println("Тест: 0000...");
      out.display();
 
      fill(0, true);
@@ -67,7 +67,7 @@ void Executor::test() {
 
      out.clear();
      out.cursor(20);
-     out.println("ВСЁ ХОРОШО!");
+     out.println_w_yo("ВСЁ ХОРОШО!");
      out.display();
 }
 
@@ -108,10 +108,9 @@ void Executor::init_dram() {
 }
 
 void Executor::fillx(int v) {
-     int r, c, g = 0;
+     int r, c;
      int nocol = 0;
      if (mode > 1) nocol = 1;
-     v %= 1;
      for (c = 0; c < (1 << bus_size - nocol); c++) {
 	  for (r = 0; r < (1 << bus_size); r++) {
 	       write_address(r, c, v);
@@ -121,7 +120,23 @@ void Executor::fillx(int v) {
 	       }
 	       v ^= 1;
 	  }
-	  g ^= 1;
+     }
+}
+
+void Executor::fill(int v, bool rd) {
+     int r, c;
+     int nocol = 0;
+     if (mode > 1) nocol = 1;
+     for (c = 0; c < (1 << bus_size-nocol); c++) {
+	  for (r = 0; r < (1 << bus_size); r++) {
+	       write_address(r, c, v);
+	       if (rd) {
+		    if (v != read_address(r, c)) {
+			 error(r, c);
+			 return;
+		    }
+	       }
+	  }
      }
 }
 
