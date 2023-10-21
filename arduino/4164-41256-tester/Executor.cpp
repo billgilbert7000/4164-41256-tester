@@ -127,3 +127,21 @@ int Executor::read_address(unsigned int r, unsigned int c) {
      digitalWrite(RAS, HIGH);
      return ret;
 }
+
+void Executor::write_address(unsigned int r, unsigned int c, int v) {
+     // row
+     setBus(r);
+     digitalWrite(RAS, LOW);
+     // rw
+     digitalWrite(WE, LOW);
+     // val
+     digitalWrite(DI, (v & 1) ? HIGH : LOW);
+     // col
+     setBus(c);
+     if (mode == 2) digitalWrite(a_bus[7], LOW);
+     if (mode == 3) digitalWrite(a_bus[7], HIGH);
+     digitalWrite(CAS, LOW);
+     digitalWrite(WE, HIGH);
+     digitalWrite(CAS, HIGH);
+     digitalWrite(RAS, HIGH);
+}
