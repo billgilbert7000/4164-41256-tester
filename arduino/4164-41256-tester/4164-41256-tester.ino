@@ -28,6 +28,7 @@ void setup() {
 
 void handle_ok() {
      executor.go(menu.get());
+		 menu_drawer.draw(menu.get());
 }
 
 void handle_select() {
@@ -40,7 +41,6 @@ void handle_buttons(Button* b) {
 
      case Button::Ok:
 					handle_ok();
-					menu_drawer.draw(menu.get());
 					break;
 
      case Button::Select:

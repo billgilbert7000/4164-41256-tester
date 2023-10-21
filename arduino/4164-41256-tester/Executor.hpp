@@ -32,5 +32,7 @@ private:
 
 private:
      void about();
+     void test();
+     void init_dram();
 };
 #endif // _EXECUTOR_HPP_

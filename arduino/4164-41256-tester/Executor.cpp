@@ -16,10 +16,15 @@ void Executor::go(MenuItem::item_t item) {
      if (item == MenuItem::_about) return about();
      bus_size = BUS_SIZE;
      if (item != MenuItem::_256k) --bus_size;
+     test();
+     btns.wait_ok();
+}
+
+void Executor::test() {
+     init_dram();
      //
      // TODO
      //
-     btns.wait_ok();
 }
 
 void Executor::about() {
@@ -46,4 +51,14 @@ void Executor::init() {
      digitalWrite(WE, HIGH);
      digitalWrite(RAS, HIGH);
      digitalWrite(CAS, HIGH);
+}
+
+void Executor::init_dram() {
+     _delay_us(250); // Initial DRAM startup delay 250us
+     for (u8 i = 0; i < 8; i++) digitalWrite(a_bus[i], LOW);
+
+     for (u8 i = 0; i < 8; i++)  {
+	  digitalWrite(RAS, LOW);
+	  digitalWrite(RAS, HIGH);
+     }
 }
