@@ -41,6 +41,7 @@ private:
      void fillx(int);
      void write_address(unsigned int, unsigned int, int);
      int read_address(unsigned int, unsigned int);
+     void set_bus(unsigned int);
      void error(int, int);
 };
 #endif // _EXECUTOR_HPP_

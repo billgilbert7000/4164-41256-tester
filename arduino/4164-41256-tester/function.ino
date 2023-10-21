@@ -29,25 +29,6 @@ void writeAddress(unsigned int r, unsigned int c, int v) {
 		 digitalWrite(RAS, HIGH);
 }
 
-int readAddress(unsigned int r, unsigned int c) {
-		 int ret = 0;
-
-		 / row /
-		 setBus(r);
-		 digitalWrite(RAS, LOW);
-		 / col /
-		 setBus(c);
-		 if (mode==2) digitalWrite(a_bus[7], LOW);
-		 if (mode==3) digitalWrite(a_bus[7], HIGH);
-		 digitalWrite(CAS, LOW);
-		 / get current value /
-		 ret = digitalRead(DO);
-
-		 digitalWrite(CAS, HIGH);
-		 digitalWrite(RAS, HIGH);
-		 return ret;
-}
-
 
 void fill(int v, bool rd) {
 		 int r, c, g = 0;

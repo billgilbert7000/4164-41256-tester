@@ -108,3 +108,22 @@ void Executor::error(int r, int c) {
      is_error = true;
      btns.wait_ok();
 }
+
+int Executor::read_address(unsigned int r, unsigned int c) {
+     int ret = 0;
+
+     // row
+     set_bus(r);
+     digitalWrite(RAS, LOW);
+     // col
+     set_bus(c);
+     if (mode == 2) digitalWrite(a_bus[7], LOW);
+     if (mode == 3) digitalWrite(a_bus[7], HIGH);
+     digitalWrite(CAS, LOW);
+     // get current value
+     ret = digitalRead(DO);
+
+     digitalWrite(CAS, HIGH);
+     digitalWrite(RAS, HIGH);
+     return ret;
+}
