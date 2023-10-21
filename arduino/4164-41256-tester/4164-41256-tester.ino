@@ -19,6 +19,7 @@ Executor executor(out);
 
 void setup() {
      out.init();
+		 executor.init();
      cong.display();
      out.clear();
      out.display();

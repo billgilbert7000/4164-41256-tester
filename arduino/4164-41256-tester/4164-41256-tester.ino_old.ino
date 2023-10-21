@@ -13,12 +13,12 @@ byte selector = 0;
 byte l_sel = 0;
 bool isError = false;
 byte ntest =0;
-
+/*
 volatile int bus_size;
 const unsigned int a_bus[BUS_SIZE] = {
 		 XA0, XA1, XA2, XA3, XA4, XA5, XA6, XA7, XA8
 };
-/*
+
 void setup() {
 		 int i;
 		 for (i = 0; i < BUS_SIZE; i++)
@@ -74,7 +74,8 @@ void loop(void) {
 		 }
 		 delay(100);
 }
-*/   
+*/
+/*
 void startTest() {
 		 initDram();
 		 u8g2.clearBuffer();
@@ -141,3 +142,4 @@ void startTest() {
 					setDisp();
 		 }
 }
+*/

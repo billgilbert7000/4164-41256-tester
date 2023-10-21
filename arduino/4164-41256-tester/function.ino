@@ -1,3 +1,4 @@
+/*
 void initDram() {
 		 int i;
 		 _delay_us(250);         // Initial DRAM startup delay 250us
@@ -23,14 +24,14 @@ void setBus(unsigned int a) {
 }
 
 void writeAddress(unsigned int r, unsigned int c, int v) {
-		 /* row */
+		 / row /
 		 setBus(r);
 		 digitalWrite(RAS, LOW);
-		 /* rw */
+		 / rw /
 		 digitalWrite(WE, LOW);
-		 /* val */
+		 / val /
 		 digitalWrite(DI, (v & 1)? HIGH : LOW);
-		 /* col */
+		 / col /
 		 setBus(c);
 		 if (mode==2) digitalWrite(a_bus[7], LOW);
 		 if (mode==3) digitalWrite(a_bus[7], HIGH);
@@ -43,15 +44,15 @@ void writeAddress(unsigned int r, unsigned int c, int v) {
 int readAddress(unsigned int r, unsigned int c) {
 		 int ret = 0;
 
-		 /* row */
+		 / row /
 		 setBus(r);
 		 digitalWrite(RAS, LOW);
-		 /* col */
+		 / col /
 		 setBus(c);
 		 if (mode==2) digitalWrite(a_bus[7], LOW);
 		 if (mode==3) digitalWrite(a_bus[7], HIGH);
 		 digitalWrite(CAS, LOW);
-		 /* get current value */
+		 / get current value /
 		 ret = digitalRead(DO);
 
 		 digitalWrite(CAS, HIGH);
@@ -182,3 +183,4 @@ void finish() {
 		 u8g2.drawStr(12,30,"press start");
 		 u8g2.sendBuffer();
 }
+*/

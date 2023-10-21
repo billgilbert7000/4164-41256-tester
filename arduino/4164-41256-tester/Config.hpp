@@ -21,7 +21,7 @@
 #define XA8         14  // PC0
 
 #define M_START     12  // Start/mode 
-#define BUS_SIZE     9
+// #define BUS_SIZE     9
 
 #define SEL_BUTTON  13
 #define OK_BUTTON   12
