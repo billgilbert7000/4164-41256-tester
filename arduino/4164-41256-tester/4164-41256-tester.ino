@@ -3,7 +3,6 @@
 //
 
 #include "Out.hpp"
-#include "Congratulation.hpp"
 #include "Types.hpp"
 #include "Buttons.hpp"
 #include "Menu.hpp"
@@ -11,7 +10,6 @@
 #include "Executor.hpp"
 
 Out out;
-Congratulation<Out> cong(out);
 Buttons btns;
 Menu menu;
 MenuDrawer menu_drawer(out);
@@ -20,7 +18,6 @@ Executor executor(out, btns);
 void setup() {
      out.init();
 		 executor.init();
-     cong.display();
      out.clear();
      out.display();
      menu_drawer.draw(menu.get());
